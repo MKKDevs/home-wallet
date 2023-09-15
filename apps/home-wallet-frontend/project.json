@@ -66,6 +66,43 @@
       "options": {
         "lintFilePatterns": ["apps/home-wallet-frontend/**/*.{ts,tsx,js,jsx}"]
       }
+    },
+    "storybook": {
+      "executor": "@nx/storybook:storybook",
+      "options": {
+        "port": 4400,
+        "configDir": "apps/home-wallet-frontend/.storybook"
+      },
+      "configurations": {
+        "ci": {
+          "quiet": true
+        }
+      }
+    },
+    "build-storybook": {
+      "executor": "@nx/storybook:build",
+      "outputs": ["{options.outputDir}"],
+      "options": {
+        "outputDir": "dist/storybook/home-wallet-frontend",
+        "configDir": "apps/home-wallet-frontend/.storybook"
+      },
+      "configurations": {
+        "ci": {
+          "quiet": true
+        }
+      }
+    },
+    "static-storybook": {
+      "executor": "@nx/web:file-server",
+      "options": {
+        "buildTarget": "home-wallet-frontend:build-storybook",
+        "staticFilePath": "dist/storybook/home-wallet-frontend"
+      },
+      "configurations": {
+        "ci": {
+          "buildTarget": "home-wallet-frontend:build-storybook:ci"
+        }
+      }
     }
   },
   "tags": []
