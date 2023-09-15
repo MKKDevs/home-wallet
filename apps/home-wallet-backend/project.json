@@ -1,0 +1,64 @@
+{
+  "name": "home-wallet-backend",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/home-wallet-backend/src",
+  "projectType": "application",
+  "targets": {
+    "build": {
+      "executor": "@nx/webpack:webpack",
+      "outputs": ["{options.outputPath}"],
+      "defaultConfiguration": "production",
+      "options": {
+        "target": "node",
+        "compiler": "tsc",
+        "outputPath": "dist/apps/home-wallet-backend",
+        "main": "apps/home-wallet-backend/src/main.ts",
+        "tsConfig": "apps/home-wallet-backend/tsconfig.app.json",
+        "assets": ["apps/home-wallet-backend/src/assets"],
+        "isolatedConfig": true,
+        "webpackConfig": "apps/home-wallet-backend/webpack.config.js"
+      },
+      "configurations": {
+        "development": {},
+        "production": {}
+      }
+    },
+    "serve": {
+      "executor": "@nx/js:node",
+      "defaultConfiguration": "development",
+      "options": {
+        "buildTarget": "home-wallet-backend:build"
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "home-wallet-backend:build:development"
+        },
+        "production": {
+          "buildTarget": "home-wallet-backend:build:production"
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nx/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/home-wallet-backend/**/*.ts"]
+      }
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "apps/home-wallet-backend/jest.config.ts",
+        "passWithNoTests": true
+      },
+      "configurations": {
+        "ci": {
+          "ci": true,
+          "codeCoverage": true
+        }
+      }
+    }
+  },
+  "tags": []
+}
