@@ -1,21 +1,28 @@
-/**
- * This is not a production server yet!
- * This is only a minimal backend to get started.
- */
+import { PrismaClient } from '@prisma/client'
+import express from 'express'
 
-import express from 'express';
-import * as path from 'path';
+const prisma = new PrismaClient()
+const app = express()
 
-const app = express();
+app.use(express.json())
 
-app.use('/assets', express.static(path.join(__dirname, 'assets')));
+app.get('/users', async (req, res) => {
+  const users = await prisma.user.findMany()
+  res.json(users)
+})
 
-app.get('/api', (req, res) => {
-  res.send({ message: 'Welcome to home-wallet-backend!' });
-});
+app.post(`/user`, async (req, res) => {
+  try {
+    const result = await prisma.user.create({
+      data: { ...req.body },
+    })
+    res.json(result)
+  } catch (e) {
+    console.error(e)
+  }
+ 
+})
 
-const port = process.env.PORT || 3333;
-const server = app.listen(port, () => {
-  console.log(`Listening at http://localhost:${port}/api`);
-});
-server.on('error', console.error);
+app.listen(3000, () =>
+  console.log('REST API server ready at: http://localhost:3000'),
+)
