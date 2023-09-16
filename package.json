@@ -3,9 +3,9 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
-    "start": "nx run-many --target=serve --all",
+    "start": "nx run home-wallet-frontend:serve",
     "server": "nx run home-wallet-backend:serve",
-    "build": "nx run-many --target=build --all",
+    "build": "nx run home-wallet-frontend:build",
     "storybook": "nx run home-wallet-frontend:storybook"
   },
   "prisma": {
