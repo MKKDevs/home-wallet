@@ -7,12 +7,12 @@ export default defineConfig({
   cacheDir: '../../node_modules/.vite/home-wallet',
 
   server: {
-    port: 10000,
+    port: 4200,
     host: 'localhost',
   },
 
   preview: {
-    port: 10000,
+    port: 4300,
     host: 'localhost',
   },
 
