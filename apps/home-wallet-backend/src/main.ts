@@ -23,6 +23,6 @@ app.post(`/user`, async (req, res) => {
  
 })
 
-app.listen(3000, () =>
+app.listen(10000, () =>
   console.log('REST API server ready at: http://localhost:3000'),
 )
