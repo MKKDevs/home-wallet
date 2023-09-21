@@ -7,7 +7,7 @@ const config: StorybookConfig = {
     name: '@storybook/react-vite',
     options: {
       builder: {
-        viteConfigPath: 'apps/home-wallet-frontend/vite.config.ts',
+        viteConfigPath: 'apps/client/vite.config.ts',
       },
     },
   },

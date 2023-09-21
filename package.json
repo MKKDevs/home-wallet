@@ -3,10 +3,10 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
-    "start": "nx run home-wallet-frontend:serve",
-    "server": "nx run home-wallet-backend:serve",
+    "start": "nx run client:serve",
+    "server": "nx run server:serve",
     "build": "nx run-many --target=build --all",
-    "storybook": "nx run home-wallet-frontend:storybook"
+    "storybook": "nx run client:storybook"
   },
   "prisma": {
     "seed": "ts-node prisma/seed.ts"
@@ -15,7 +15,8 @@
   "dependencies": {
     "@prisma/client": "^5.3.1",
     "@swc/helpers": "~0.5.0",
-    "axios": "^1.0.0",
+    "axios": "^1.5.0",
+    "cors": "^2.8.5",
     "express": "^4.18.1",
     "fork-ts-checker-webpack-plugin": "^6.5.2",
     "mongodb": "^6.1.0",
