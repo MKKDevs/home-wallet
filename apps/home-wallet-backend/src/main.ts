@@ -23,6 +23,6 @@ app.post(`/user`, async (req, res) => {
  
 })
 
-app.listen(10000, () =>
+app.listen(30414, () =>
   console.log('Server is running!'),
 )
