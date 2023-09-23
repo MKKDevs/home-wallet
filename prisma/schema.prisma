@@ -10,7 +10,7 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model User {
+model Todo {
   id Int @default(autoincrement()) @id
   name String 
 }
